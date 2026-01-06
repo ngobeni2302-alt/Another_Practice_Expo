@@ -29,10 +29,10 @@ def extract_middle_three(text: str) -> str:
         return text
     elif len(text) == 3:
         return text[1]
-    elif text[len(text) % 2 -1 : len(text)+1]:
-        return text 
+    elif len(text) % 2 == 0:
+        return text[len(text) % 2 -1: len(text) % 2 +1]
     else:
-        return "No"   
+        return "No"
     
 print(extract_middle_three("ntsako"))
 
@@ -132,13 +132,7 @@ def remove_vowels(text: str) -> str:
         remove_vowels("Hello World") -> "Hll Wrld"
         remove_vowels("Python")      -> "Pythn"
     """
-    vowels = ("a,e,i,o,u,A,E,I,O,U")
-    for n in vowels:
-        for x in text:
-            if n == x:
-                return text.replace(x, "")
-            
-print(remove_vowels("education"))
+    pass
 
 
 # ------------------------------------------------------
@@ -204,4 +198,12 @@ def insertion_sort(arr: list[int]) -> list[int]:
         insertion_sort([])             -> []
         insertion_sort([1])            -> [1]
     """
-    
+    numbers = len(arr)
+
+    for i in range(numbers):
+        for x in range (0, numbers - i - 1):
+            if arr[x] > arr[x + 1]:
+                arr[x], arr[x +1] = arr[ x + 1], arr[x]
+
+    return arr
+print(insertion_sort([6,89,7,3,43,1]))
