@@ -25,15 +25,18 @@ def extract_middle_three(text: str) -> str:
         extract_middle_three("Python")  -> "tho"
         extract_middle_three("hi")      -> "hi"
     """
+    middle_text = len(text) // 22
     if len(text) <= 2:
         return text
     elif len(text) == 3:
         return text[1]
     elif len(text) % 2 == 0:
-        return text[len(text) % 2 -1: len(text) % 2 +1]
+        return text[middle_text -1: middle_text +2]
+    elif len(text) % 2 != 0:
+        return text[middle_text -1: middle_text +2]
     else:
-        return "No"
-    
+        return "None"
+
 print(extract_middle_three("ntsako"))
 
 
@@ -132,7 +135,14 @@ def remove_vowels(text: str) -> str:
         remove_vowels("Hello World") -> "Hll Wrld"
         remove_vowels("Python")      -> "Pythn"
     """
-    pass
+    vowels = "aeiouAEIOU"
+    new_text = ""
+
+    for letter in text:
+        if letter not  in vowels:
+            new_text = new_text + letter
+    return new_text
+print(remove_vowels("Ntsako"))
 
 
 # ------------------------------------------------------
